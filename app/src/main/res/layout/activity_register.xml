@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_margin="30dp"
+        >
+
+        <TextView
+            android:id="@+id/tvTittleRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:text="@string/registar"
+            android:layout_marginBottom="80dp"
+            />
+
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="nome"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/etMail"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp"
+            android:autofillHints=""
+            android:layout_marginTop="15dp"
+            />
+
+        <EditText
+            android:id="@+id/etPass"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:layout_marginTop="15dp"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/etPassConfirm"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/confirma_password"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:layout_marginTop="15dp"
+            android:autofillHints="" />
+
+        <Button
+            android:id="@+id/btnReg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/registar" />
+    </LinearLayout>
+</LinearLayout>

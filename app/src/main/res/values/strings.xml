@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Nha Konsulta</string>
+    <string name="login">Login</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="registar">Registar</string>
+    <string name="confirma_password">Confirma password</string>
+    <string name="nha_konsulta">Nha Konsulta</string>
+    <string name="bem_vindo">Bem Vindo</string>
+    <string name="marcar_consulta">Marcar Consulta</string>
+    <string name="ver_consultas">Ver Consultas</string>
+    <string name="horarios">Horarios</string>
+    <string name="medicos">Medicos</string>
+</resources>
