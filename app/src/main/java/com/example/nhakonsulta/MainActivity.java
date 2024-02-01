@@ -1,31 +1,23 @@
 package com.example.nhakonsulta;
 
-import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.view.textclassifier.TextLanguage;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LoginCallback {
 
     EditText etvPassword, etvEmail;
     Button btnLogin, btnRegistar;
-    String url = "https://4491-38-44-73-67.ngrok-free.app";
+    String url = "https://ae29-38-44-73-67.ngrok-free.app";
     OkHttpClient client;
 
     @Override
@@ -53,39 +45,49 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = etvEmail.getText().toString();
                 String pass = etvPassword.getText().toString();
-                boolean isValidated = login(email, pass);
+                attemptLogin(email, pass);
 
-                if(isValidated){
-                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                    startActivity(intent);
-                }
+
             }
         });
     }
 
-    private boolean login(String email, String pass) {
-        final boolean[] valid = new boolean[1];
-        RequestBody requestBody = new FormBody.Builder()
-                .add("email", email)
-                .add("senha", pass)
-                .build();
-        Request request = new Request.Builder().url(url + "/auth/login").post(requestBody).build();
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                e.printStackTrace();
-            }
+    private void attemptLogin(String email, String password) {
+        // Get email and password from your UI components
 
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                Toast.makeText(getApplicationContext(),"resposta do server " + response,Toast.LENGTH_LONG).show();
-                if(response.equals(200)){
-                    valid[0] = true;
-                }else {
-                    valid[0] = false;
-                }
-            }
-        });
-        return valid[0];
+
+        Login login = new Login();
+        login.login(email, password, this);
     }
+
+    @Override
+    public void onLoginResult(boolean success, @Nullable String jwtToken) {
+        if (success) {
+            // Login successful, handle accordingly (e.g., save the token and navigate to the next activity)
+            if (jwtToken != null) {
+                // Save the token to SharedPreferences or wherever you want to store it
+                SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("jwtToken", jwtToken);
+                editor.apply();
+
+                // Navigate to the next activity
+                Intent intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
+                finish(); // Optional: Finish the current activity to prevent going back with back button
+            }
+            if (jwtToken != null) {
+                // Save the token to SharedPreferences or wherever you want to store it
+                SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("jwtToken", jwtToken);
+                editor.apply();
+            }
+            //Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
+        } else {
+            // Login failed, handle accordingly (e.g., show an error message)
+            //Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }
