@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements LoginCallback {
 
     EditText etvPassword, etvEmail;
     Button btnLogin, btnRegistar;
-    String url = "https://ae29-38-44-73-67.ngrok-free.app";
+    String url = "https://7ecd-102-213-204-145.ngrok-free.app";
     OkHttpClient client;
 
     @Override
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements LoginCallback {
             public void onClick(View view) {
                 etvPassword.setText("");
                 etvEmail.setText("");
-                Intent intent = new Intent(getApplicationContext(), EspecialidadesActivity.class);
+                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(intent);
             }
         });
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements LoginCallback {
     }
 
     private void attemptLogin(String email, String password) {
-        // Get email and password from your UI components
+
 
 
         Login login = new Login();
@@ -63,21 +63,21 @@ public class MainActivity extends AppCompatActivity implements LoginCallback {
     @Override
     public void onLoginResult(boolean success, @Nullable String jwtToken) {
         if (success) {
-            // Login successful, handle accordingly (e.g., save the token and navigate to the next activity)
+
             if (jwtToken != null) {
-                // Save the token to SharedPreferences or wherever you want to store it
+
                 SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("jwtToken", jwtToken);
                 editor.apply();
 
-                // Navigate to the next activity
+
                 Intent intent = new Intent(this, HomeActivity.class);
                 startActivity(intent);
-                finish(); // Optional: Finish the current activity to prevent going back with back button
+                finish();
             }
             if (jwtToken != null) {
-                // Save the token to SharedPreferences or wherever you want to store it
+
                 SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("jwtToken", jwtToken);
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements LoginCallback {
             }
             //Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
         } else {
-            // Login failed, handle accordingly (e.g., show an error message)
+
             //Toast.makeText(this, "Login failed", Toast.LENGTH_SHORT).show();
         }
     }

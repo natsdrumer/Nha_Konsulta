@@ -18,7 +18,7 @@ import okhttp3.Response;
 public class Login {
 
     private final OkHttpClient client = new OkHttpClient();
-    private final String url = "https://ae29-38-44-73-67.ngrok-free.app";
+    private final String url = "https://7ecd-102-213-204-145.ngrok-free.app";
 
     public void login(String email, String pass, final LoginCallback callback) {
         RequestBody requestBody = new FormBody.Builder()

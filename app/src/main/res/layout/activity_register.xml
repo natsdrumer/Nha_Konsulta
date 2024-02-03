@@ -5,6 +5,11 @@
     android:gravity="center"
     >
 
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,7 +25,7 @@
             android:textSize="30sp"
             android:textStyle="bold"
             android:text="@string/registar"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="15dp"
             />
 
         <EditText
@@ -67,6 +72,56 @@
             android:layout_marginTop="15dp"
             android:autofillHints="" />
 
+        <EditText
+            android:id="@+id/etIdade"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="idade"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/etMorada"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="morada"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/etNif"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="nif"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/etTelefone"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="telefone"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/etInps"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Seguro"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:autofillHints="" />
+
         <Button
             android:id="@+id/btnReg"
             android:layout_width="wrap_content"
@@ -74,4 +129,5 @@
             android:layout_marginTop="25dp"
             android:text="@string/registar" />
     </LinearLayout>
+    </ScrollView>
 </LinearLayout>
